@@ -1,0 +1,111 @@
+
+<header class="cabecalho">
+  <img
+  src="/images/logo.png"
+  alt="Logo da Nerd Angola Planet"
+  class="logo"
+/>
+<h1>Nerd Angola Planet</h1>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#catalogo">Figures</a>
+    <a href="#sobre">Sobre a loja</a>
+  </nav>
+</header>
+
+<main>
+  <section id="inicio" class="destaque">
+    <h2>Bem-vindo à Nerd Angola Planet</h2>
+    <p>Figures e colecionáveis para quem é fã de anime.</p>
+    <a href="#catalogo">Explorar figures</a>
+  </section>
+
+  
+<section id="catalogo">
+  <h2>Nosso catálogo</h2>
+
+
+<div class="pesquisa-catalogo">
+  <input
+    type="search"
+    placeholder="Pesquisar figures..."
+    aria-label="Pesquisar figures"
+    [value]="pesquisa()"
+    (input)="atualizarPesquisa($event)"
+  />
+</div>
+
+
+
+  <div class="grade-produtos">
+
+    
+@if ('monkey d. luffy gear 5 one piece'.includes(pesquisa())) {
+  <article class="produto">
+    <img
+      src="/images/luffy.png"
+      alt="Figure do Monkey D. Luffy Gear 5"
+      class="imagem-produto"
+    />
+    <h3>Monkey D. Luffy Gear 5</h3>
+    <p>One Piece</p>
+    <span>Figure colecionável</span>
+    
+<a class="botao-detalhes" routerLink="/produto/1">Ver detalhes</a>
+
+
+  </article>
+}
+
+
+    
+@if ('satoru gojo jujutsu kaisen'.includes(pesquisa())) {
+  <article class="produto">
+    <img
+      src="/images/gojo.png"
+      alt="Figure do Satoru Gojo"
+      class="imagem-produto"
+    />
+    <h3>Satoru Gojo</h3>
+    <p>Jujutsu Kaisen</p>
+    <span>Figure colecionável</span>
+    
+<a class="botao-detalhes" routerLink="/produto/2">Ver detalhes</a>
+
+
+  </article>
+}
+
+    
+@if ('frieren jornada para o além'.includes(pesquisa())) {
+  <article class="produto">
+    <img
+      src="/images/frieren.png"
+      alt="Figure da Frieren"
+      class="imagem-produto"
+    />
+    <h3>Frieren</h3>
+    <p>Frieren e a Jornada para o Além</p>
+    <span>Figure colecionável</span>
+    
+<a class="botao-detalhes" routerLink="/produto/3">Ver detalhes</a>
+
+
+  </article>
+}
+
+
+  </div>
+</section>
+
+
+  <section id="sobre">
+    <h2>Sobre a loja</h2>
+    <p>A Nerd Angola Planet é uma loja de figures e colecionáveis.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Nerd Angola Planet</p>
+</footer>
+

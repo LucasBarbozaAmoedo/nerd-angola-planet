@@ -1,0 +1,28 @@
+
+<main class="detalhes-produto">
+  <a href="/">← Voltar ao catálogo</a>
+
+  @if (produto(); as item) {
+    <section class="conteudo-produto">
+      <div class="imagem-detalhes">
+        <img
+          [src]="item.imagem"
+          [alt]="'Figure do ' + item.nome"
+        />
+      </div>
+
+      <div class="informacoes-produto">
+        <h1>{{ item.nome }}</h1>
+        <p class="categoria">{{ item.categoria }}</p>
+        <p class="descricao">{{ item.descricao }}</p>
+        <p class="estoque">Disponibilidade: a consultar</p>
+
+        <button type="button">
+          Consultar disponibilidade
+        </button>
+      </div>
+    </section>
+  } @else {
+    <h2>Produto não encontrado</h2>
+  }
+</main>
