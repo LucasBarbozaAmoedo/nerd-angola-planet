@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* Estilos globais do Nerd Angola Planet */
+
+/* Modo de alto contraste para melhorar a leitura */
+html.alto-contraste {
+  color-scheme: dark;
+}
+
+/* Fundo escuro e textos claros */
+html.alto-contraste,
+html.alto-contraste body,
+html.alto-contraste header,
+html.alto-contraste main,
+html.alto-contraste section,
+html.alto-contraste article,
+html.alto-contraste nav,
+html.alto-contraste footer {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Links com destaque amarelo */
+html.alto-contraste a {
+  color: #ffff00 !important;
+}
+
+/* Botões e campos com contraste elevado */
+html.alto-contraste button,
+html.alto-contraste input,
+html.alto-contraste select,
+html.alto-contraste textarea {
+  background-color: #000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+}
+
+/* Destaque para navegação por teclado */
+html.alto-contraste :focus-visible {
+  outline: 3px solid #00ffff !important;
+  outline-offset: 3px;
+}
+
+/* Bordas visíveis nos elementos */
+html.alto-contraste article,
+html.alto-contraste section {
+  border-color: #ffff00 !important;
+}
+
+/* Preserva as imagens dos produtos */
+html.alto-contraste img {
+  opacity: 1;
+}

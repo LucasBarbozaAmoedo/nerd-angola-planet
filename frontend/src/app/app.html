@@ -1,2 +1,49 @@
 
+<!-- Cabeçalho global, exibido em todas as páginas -->
+<header class="cabecalho-global">
+
+  <!-- Nome da loja com link para a página inicial -->
+  <a routerLink="/" class="logo-global">
+    Nerd Angola Planet
+  </a>
+
+  <!-- Navegação principal do site -->
+  <nav class="navegacao-global" aria-label="Navegação principal">
+
+    <!-- Link para o catálogo de produtos -->
+    <a routerLink="/" class="link-catalogo">
+      Catálogo
+    </a>
+
+    <!-- Link para a página do carrinho -->
+    <a routerLink="/carrinho" class="link-carrinho">
+
+      <!-- Ícone decorativo do carrinho -->
+      <span aria-hidden="true">🛒</span>
+
+      <span>Carrinho</span>
+
+      <!-- Mostra a quantidade total de produtos -->
+      @if (carrinho.quantidadeTotal() > 0) {
+        <span class="contador-carrinho">
+          {{ carrinho.quantidadeTotal() }}
+        </span>
+      }
+
+    </a>
+
+    <!-- Botão de acessibilidade -->
+    <button
+      type="button"
+      class="botao-contraste"
+      (click)="alternarContraste()"
+      [attr.aria-pressed]="altoContraste()"
+    >
+      {{ altoContraste() ? 'Desativar alto contraste' : 'Alto contraste' }}
+    </button>
+
+  </nav>
+</header>
+
+<!-- Exibe a página correspondente à rota atual -->
 <router-outlet />

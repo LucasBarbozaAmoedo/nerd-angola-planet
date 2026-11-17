@@ -1,44 +1,4 @@
 
-<!-- Cabeçalho da página inicial -->
-<header class="cabecalho">
-
-  <!-- Logo da loja -->
-  <img
-    src="/images/logo.png"
-    alt="Logo da Nerd Angola Planet"
-    class="logo"
-  />
-
-  <!-- Nome da loja -->
-  <h1>Nerd Angola Planet</h1>
-
-  <!-- Links de navegação -->
-  <nav aria-label="Navegação da loja">
-
-    <!-- Navegação entre as seções da página -->
-    <a href="#inicio">Início</a>
-    <a href="#catalogo">Figures</a>
-    <a href="#sobre">Sobre a loja</a>
-
-    
-<!-- Link para acessar o carrinho de compras -->
-<a routerLink="/carrinho" class="link-carrinho">
-
-  Carrinho
-
-  <!-- Mostra o contador quando existem produtos -->
-  @if (carrinho.quantidadeTotal() > 0) {
-    <span class="contador-carrinho">
-      {{ carrinho.quantidadeTotal() }}
-    </span>
-  }
-
-</a>
-
-
-  </nav>
-</header>
-
 <!-- Conteúdo principal da loja -->
 <main>
 

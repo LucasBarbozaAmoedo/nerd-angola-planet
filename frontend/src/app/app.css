@@ -330,3 +330,51 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+/* ========================================
+   BOTÃO DE ACESSIBILIDADE
+======================================== */
+
+/* Botão para ativar e desativar o alto contraste */
+.botao-contraste {
+  padding: 11px 16px;
+  background-color: #facc15;
+  color: #101014;
+  border: 2px solid #facc15;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Destaque ao passar o mouse */
+.botao-contraste:hover {
+  background-color: #fde047;
+}
+
+/* Destaque ao navegar pelo teclado */
+.botao-contraste:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+  .botao-contraste {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+/* Aplica o fundo de alto contraste ao componente principal */
+:host-context(html.alto-contraste) {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Destaca o cabeçalho no modo de alto contraste */
+:host-context(html.alto-contraste) .cabecalho-global {
+  background-color: #000;
+  border-bottom: 2px solid #ffff00;
+}
