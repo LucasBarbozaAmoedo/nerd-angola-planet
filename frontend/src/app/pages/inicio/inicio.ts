@@ -34,8 +34,11 @@ export class Inicio implements OnInit {
   // Armazena o texto digitado na pesquisa
   pesquisa = signal('');
 
+  // Endereço público da API hospedada no Render
+  private readonly apiUrl =
+    'https://nerd-angola-planet-api.onrender.com/api/produtos';
+
   // Conecta a página ao serviço global do carrinho
-  // Permite consultar a quantidade total de produtos
   readonly carrinho = inject(Carrinho);
 
   // Injeta o HttpClient para realizar requisições à API
@@ -44,9 +47,9 @@ export class Inicio implements OnInit {
   // Executado quando a página inicial é carregada
   ngOnInit(): void {
 
-    // Busca os produtos cadastrados no MySQL por meio do backend
+    // Busca os produtos no TiDB Cloud por meio da API
     this.http
-      .get<Produto[]>('http://localhost:3000/api/produtos')
+      .get<Produto[]>(this.apiUrl)
       .subscribe({
 
         // Atualiza a lista quando os produtos são recebidos

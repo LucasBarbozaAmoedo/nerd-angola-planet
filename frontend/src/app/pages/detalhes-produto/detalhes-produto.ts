@@ -25,6 +25,10 @@ interface Produto {
 })
 export class DetalhesProduto {
 
+  // Endereço público da API hospedada no Render
+  private readonly apiUrl =
+    'https://nerd-angola-planet-api.onrender.com/api/produtos';
+
   // Permite identificar qual produto foi aberto pela URL
   private rota = inject(ActivatedRoute);
 
@@ -100,9 +104,9 @@ export class DetalhesProduto {
       this.quantidade.set(1);
       this.mensagemCarrinho.set('');
 
-      // Busca o produto correspondente no backend Express
+      // Busca o produto correspondente na API do Render
       this.http
-        .get<Produto>(`http://localhost:3000/api/produtos/${id}`)
+        .get<Produto>(`${this.apiUrl}/${id}`)
         .subscribe({
 
           // Executado quando a API retorna o produto

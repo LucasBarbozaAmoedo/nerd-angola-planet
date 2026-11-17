@@ -19,9 +19,14 @@ const {
 // Inicialização da aplicação Express
 const app = express();
 
-// Permite requisições do frontend Angular
+// Permite requisições do Angular local e do site publicado
+const origensPermitidas = [
+  'http://localhost:4200',
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: 'http://localhost:4200'
+  origin: origensPermitidas
 }));
 
 // Permite receber dados em formato JSON
