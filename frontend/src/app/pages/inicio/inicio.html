@@ -37,65 +37,40 @@
 
 
 
-  <div class="grade-produtos">
+  
 
-    
-@if ('monkey d. luffy gear 5 one piece'.includes(pesquisa())) {
-  <article class="produto">
-    <img
-      src="/images/luffy.png"
-      alt="Figure do Monkey D. Luffy Gear 5"
-      class="imagem-produto"
-    />
-    <h3>Monkey D. Luffy Gear 5</h3>
-    <p>One Piece</p>
-    <span>Figure colecionável</span>
-    
-<a class="botao-detalhes" routerLink="/produto/1">Ver detalhes</a>
+<div class="grade-produtos">
 
+  @for (produto of produtosFiltrados(); track produto.id) {
+    <article class="produto">
 
-  </article>
-}
+      <img
+        [src]="produto.imagem"
+        [alt]="'Figure de ' + produto.nome"
+        class="imagem-produto"
+      />
 
+      <h3>{{ produto.nome }}</h3>
+      <p>{{ produto.categoria }}</p>
+      <span>Figure colecionável</span>
 
-    
-@if ('satoru gojo jujutsu kaisen'.includes(pesquisa())) {
-  <article class="produto">
-    <img
-      src="/images/gojo.png"
-      alt="Figure do Satoru Gojo"
-      class="imagem-produto"
-    />
-    <h3>Satoru Gojo</h3>
-    <p>Jujutsu Kaisen</p>
-    <span>Figure colecionável</span>
-    
-<a class="botao-detalhes" routerLink="/produto/2">Ver detalhes</a>
+      <a
+        class="botao-detalhes"
+        [routerLink]="['/produto', produto.id]"
+      >
+        Ver detalhes
+      </a>
+
+    </article>
+  } @empty {
+    <p class="sem-resultados">
+      Nenhuma figure encontrada. Tente pesquisar outro nome ou anime.
+    </p>
+  }
+
+</div>
 
 
-  </article>
-}
-
-    
-@if ('frieren jornada para o além'.includes(pesquisa())) {
-  <article class="produto">
-    <img
-      src="/images/frieren.png"
-      alt="Figure da Frieren"
-      class="imagem-produto"
-    />
-    <h3>Frieren</h3>
-    <p>Frieren e a Jornada para o Além</p>
-    <span>Figure colecionável</span>
-    
-<a class="botao-detalhes" routerLink="/produto/3">Ver detalhes</a>
-
-
-  </article>
-}
-
-
-  </div>
 </section>
 
 
