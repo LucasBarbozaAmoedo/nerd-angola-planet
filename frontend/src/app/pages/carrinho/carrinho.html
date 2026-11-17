@@ -1,0 +1,161 @@
+
+<!-- Conteúdo principal da página do carrinho -->
+<main class="pagina-carrinho">
+
+  <!-- Cabeçalho da página -->
+  <header class="cabecalho-carrinho">
+    <h1>Meu carrinho</h1>
+    <a href="/">← Continuar comprando</a>
+  </header>
+
+  <!-- Verifica se existem produtos no carrinho -->
+  @if (carrinho.itens().length > 0) {
+
+    <div class="conteudo-carrinho">
+
+      <!-- Lista de produtos adicionados -->
+      <section class="lista-carrinho">
+
+        <h2>Produtos selecionados</h2>
+
+        <!-- Percorre todos os produtos do carrinho -->
+        @for (item of carrinho.itens(); track item.id) {
+
+          <article class="item-carrinho">
+
+            <!-- Imagem da figure -->
+            <div class="imagem-item">
+              <img
+                [src]="item.imagem"
+                [alt]="'Figure do ' + item.nome"
+              />
+            </div>
+
+            <!-- Informações do produto -->
+            <div class="informacoes-item">
+
+              <h3>{{ item.nome }}</h3>
+
+              <p class="categoria-item">
+                {{ item.categoria }}
+              </p>
+
+              <!-- Preço de uma unidade -->
+              <p class="preco-unitario">
+                Preço unitário:
+                {{ formatarPreco(item.preco) }}
+              </p>
+
+              <!-- Controle da quantidade -->
+              <div class="controle-quantidade">
+
+                <span>Quantidade:</span>
+
+                <div class="botoes-quantidade">
+
+                  <!-- Diminui a quantidade -->
+                  <button
+                    type="button"
+                    (click)="diminuirQuantidade(item.id, item.quantidade)"
+                    [disabled]="item.quantidade <= 1"
+                    aria-label="Diminuir quantidade">
+                    −
+                  </button>
+
+                  <!-- Exibe a quantidade atual -->
+                  <span>{{ item.quantidade }}</span>
+
+                  <!-- Aumenta respeitando o estoque -->
+                  <button
+                    type="button"
+                    (click)="aumentarQuantidade(item.id, item.quantidade)"
+                    [disabled]="item.quantidade >= item.estoque"
+                    aria-label="Aumentar quantidade">
+                    +
+                  </button>
+
+                </div>
+              </div>
+
+              <!-- Valor do produto multiplicado pela quantidade -->
+              <p class="subtotal-item">
+                Subtotal:
+                <strong>
+                  {{ formatarPreco(item.preco * item.quantidade) }}
+                </strong>
+              </p>
+
+              <!-- Remove o produto do carrinho -->
+              <button
+                type="button"
+                class="botao-remover"
+                (click)="removerProduto(item.id)">
+                Remover produto
+              </button>
+
+            </div>
+          </article>
+        }
+
+      </section>
+
+      <!-- Resumo dos valores da compra -->
+      <aside class="resumo-carrinho">
+
+        <h2>Resumo da compra</h2>
+
+        <!-- Quantidade total de unidades -->
+        <p>
+          Produtos:
+          <strong>{{ carrinho.quantidadeTotal() }}</strong>
+        </p>
+
+        <!-- Soma dos preços de todos os produtos -->
+        <p class="valor-total">
+          Total:
+          <strong>
+            {{ formatarPreco(carrinho.valorTotal()) }}
+          </strong>
+        </p>
+
+        <!-- Finalização será implementada posteriormente -->
+        <button
+          type="button"
+          class="botao-finalizar"
+          disabled>
+          Finalizar compra
+        </button>
+
+        <!-- Permite remover todos os itens -->
+        <button
+          type="button"
+          class="botao-limpar"
+          (click)="limparCarrinho()">
+          Limpar carrinho
+        </button>
+
+      </aside>
+
+    </div>
+
+  } @else {
+
+    <!-- Mensagem exibida quando não existem produtos -->
+    <section class="carrinho-vazio">
+
+      <h2>Seu carrinho está vazio</h2>
+
+      <p>
+        Você ainda não adicionou nenhuma figure ao carrinho.
+      </p>
+
+      <a href="/">
+        Explorar catálogo
+      </a>
+
+    </section>
+
+  }
+
+</main>
+

@@ -1,3 +1,28 @@
 
-backend/node_modules/
-backend/.env
+# Dependências do Node.js
+node_modules/
+**/node_modules/
+
+# Senhas e configurações privadas
+.env
+.env.*
+!.env.example
+
+# Arquivos gerados pelo Angular
+.angular/
+dist/
+**/dist/
+
+# Logs
+*.log
+
+# Configurações locais
+.vscode/
+.idea/
+
+# Arquivos temporários
+.DS_Store
+Thumbs.db
+
+# Relatórios de testes
+coverage/

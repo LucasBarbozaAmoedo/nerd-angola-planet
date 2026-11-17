@@ -1,4 +1,9 @@
 
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
+/* Define a aparência principal da página */
 :host {
   display: block;
   min-height: 100vh;
@@ -7,54 +12,108 @@
   font-family: Arial, sans-serif;
 }
 
+/* Evita que padding e bordas aumentem a largura dos elementos */
 * {
   box-sizing: border-box;
 }
 
+/* ========================================
+   CABEÇALHO DA LOJA
+======================================== */
+
+/* Organiza a logo, o nome e a navegação */
 .cabecalho {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 8%;
+  gap: 20px;
+  padding: 20px 8%;
   background-color: #19191f;
   border-bottom: 2px solid #b91c1c;
 }
 
+/* Nome da loja */
 .cabecalho h1 {
   color: #facc15;
   font-size: 25px;
+  margin: 0;
 }
 
-nav {
+/* Logo original */
+.logo {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Organiza os links do menu */
+.cabecalho nav {
   display: flex;
-  gap: 28px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
-nav a {
+/* Aparência dos links */
+.cabecalho nav a {
   color: white;
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-nav a:hover {
+/* Destaca os links ao passar o mouse */
+.cabecalho nav a:hover {
   color: #facc15;
 }
 
+/* Link do carrinho */
+.cabecalho nav .link-carrinho {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+}
+
+/* Contador de unidades adicionadas ao carrinho */
+.contador-carrinho {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  background-color: #b91c1c;
+  color: #ffffff;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* ========================================
+   SEÇÃO DE DESTAQUE
+======================================== */
+
+/* Área de apresentação da loja */
 .destaque {
   padding: 100px 8%;
   text-align: center;
   background: linear-gradient(135deg, #271013, #101014);
 }
 
+/* Título principal */
 .destaque h2 {
   font-size: 42px;
   margin-bottom: 20px;
 }
 
+/* Descrição */
 .destaque p {
   color: #cccccc;
   margin-bottom: 35px;
 }
 
+/* Botão para explorar o catálogo */
 .destaque a {
   display: inline-block;
   padding: 15px 30px;
@@ -63,122 +122,41 @@ nav a:hover {
   text-decoration: none;
   border-radius: 8px;
   font-weight: bold;
+  transition: background-color 0.2s ease;
 }
 
+/* Efeito do botão */
 .destaque a:hover {
   background-color: #dc2626;
 }
 
-#catalogo, #sobre {
+/* ========================================
+   CATÁLOGO E SOBRE
+======================================== */
+
+/* Espaçamento das seções */
+#catalogo,
+#sobre {
   padding: 65px 8%;
 }
 
-#catalogo h2, #sobre h2 {
+/* Títulos das seções */
+#catalogo h2,
+#sobre h2 {
   color: #facc15;
   margin-bottom: 20px;
 }
 
-footer {
-  padding: 25px;
-  text-align: center;
-  background-color: #19191f;
-  color: #aaaaaa;
-}
+/* ========================================
+   PESQUISA DE PRODUTOS
+======================================== */
 
-@media (max-width: 768px) {
-  .cabecalho {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-
-  nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .destaque {
-    padding: 70px 6%;
-  }
-
-  .destaque h2 {
-    font-size: 30px;
-  }
-}
-.logo {
-  width: 100px;
-  height: auto;
-  object-fit: contain;
-}
-/* Catálogo de produtos */
-.grade-produtos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 30px;
-}
-
-/* Card de cada figure */
-.produto {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 25px;
-  background-color: #19191f;
-  border: 1px solid #33333d;
-  border-radius: 12px;
-}
-
-.produto h3 {
-  color: #facc15;
-  font-size: 20px;
-}
-
-.produto p {
-  color: #cccccc;
-}
-
-.produto span {
-  color: #aaaaaa;
-  font-size: 14px;
-}
-
-.produto button {
-  margin-top: auto;
-  padding: 12px;
-  background-color: #b91c1c;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.produto button:hover {
-  background-color: #dc2626;
-}
-
-/* Ajuste para celulares */
-@media (max-width: 768px) {
-  .grade-produtos {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Imagens dos produtos */
-.imagem-produto {
-  width: 100%;
-  height: 250px;
-  object-fit: contain;
-  border-radius: 8px;
-  background-color: #25252d;
-}
-
-/* Barra de pesquisa do catálogo */
+/* Espaçamento da barra de pesquisa */
 .pesquisa-catalogo {
   margin: 25px 0;
 }
 
+/* Campo onde o usuário pesquisa as figures */
 .pesquisa-catalogo input {
   width: 100%;
   max-width: 450px;
@@ -191,12 +169,72 @@ footer {
   outline: none;
 }
 
+/* Destaca a pesquisa quando selecionada */
 .pesquisa-catalogo input:focus {
   border-color: #facc15;
 }
 
+/* ========================================
+   GRADE DE PRODUTOS
+======================================== */
+
+/* Organiza os produtos em três colunas */
+.grade-produtos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+/* Card individual de cada figure */
+.produto {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 0;
+  padding: 25px;
+  background-color: #19191f;
+  border: 1px solid #33333d;
+  border-radius: 12px;
+}
+
+/* Imagem do produto */
+.imagem-produto {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: #25252d;
+}
+
+/* Nome da figure */
+.produto h3 {
+  color: #facc15;
+  font-size: 20px;
+  margin: 0;
+}
+
+/* Categoria */
+.produto p {
+  color: #cccccc;
+  margin: 0;
+}
+
+/* Informações adicionais */
+.produto span {
+  color: #aaaaaa;
+  font-size: 14px;
+}
+
+/* ========================================
+   BOTÃO VER DETALHES
+======================================== */
+
+/* Botão que abre a página individual do produto */
 .botao-detalhes {
   display: inline-block;
+  margin-top: auto;
   padding: 12px 24px;
   background-color: #b91c1c;
   color: #ffffff;
@@ -204,15 +242,91 @@ footer {
   font-weight: 600;
   border-radius: 8px;
   text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
+/* Efeito ao passar o mouse */
 .botao-detalhes:hover {
   background-color: #991b1b;
   transform: translateY(-2px);
 }
 
+/* Destaque para navegação por teclado */
 .botao-detalhes:focus-visible {
   outline: 2px solid #facc15;
   outline-offset: 3px;
+}
+
+/* Mensagem exibida quando a pesquisa não encontra resultados */
+.sem-resultados {
+  grid-column: 1 / -1;
+  color: #cccccc;
+  text-align: center;
+  padding: 30px;
+}
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+/* Área inferior da loja */
+footer {
+  padding: 25px;
+  text-align: center;
+  background-color: #19191f;
+  color: #aaaaaa;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+/* Tablets: exibe dois produtos por linha */
+@media (max-width: 1024px) {
+  .grade-produtos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cabecalho {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Celulares: reorganiza o cabeçalho e os produtos */
+@media (max-width: 768px) {
+  .cabecalho {
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 6%;
+    text-align: center;
+  }
+
+  .cabecalho nav {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .destaque {
+    padding: 70px 6%;
+  }
+
+  .destaque h2 {
+    font-size: 30px;
+  }
+
+  #catalogo,
+  #sobre {
+    padding: 45px 6%;
+  }
+
+  .grade-produtos {
+    grid-template-columns: 1fr;
+  }
+
+  .produto {
+    padding: 20px;
+  }
 }

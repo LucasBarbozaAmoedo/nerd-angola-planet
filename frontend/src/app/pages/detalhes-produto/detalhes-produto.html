@@ -1,9 +1,16 @@
 
+<!-- Conteúdo principal da página de detalhes -->
 <main class="detalhes-produto">
+
+  <!-- Link para retornar ao catálogo -->
   <a href="/">← Voltar ao catálogo</a>
 
+  <!-- Exibe as informações quando o produto é carregado -->
   @if (produto(); as item) {
+
     <section class="conteudo-produto">
+
+      <!-- Imagem do produto -->
       <div class="imagem-detalhes">
         <img
           [src]="item.imagem"
@@ -11,18 +18,112 @@
         />
       </div>
 
+      <!-- Informações da figure -->
       <div class="informacoes-produto">
-        <h1>{{ item.nome }}</h1>
-        <p class="categoria">{{ item.categoria }}</p>
-        <p class="descricao">{{ item.descricao }}</p>
-        <p class="estoque">Disponibilidade: a consultar</p>
 
-        <button type="button">
-          Consultar disponibilidade
-        </button>
+        <!-- Nome do produto -->
+        <h1>{{ item.nome }}</h1>
+
+        <!-- Categoria ou anime -->
+        <p class="categoria">{{ item.categoria }}</p>
+
+        <!-- Descrição recebida da API -->
+        <p class="descricao">{{ item.descricao }}</p>
+
+        <!-- Preço unitário formatado em reais -->
+        <h2 class="preco">
+          {{ item.preco.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          }) }}
+        </h2>
+
+        <!-- Verifica se o produto está disponível -->
+        @if (item.estoque > 0) {
+
+          <!-- Quantidade disponível no banco de dados -->
+          <p class="estoque">
+            Disponível em estoque: {{ item.estoque }} unidades
+          </p>
+
+          <!-- Área de seleção de quantidade -->
+          <div class="controle-quantidade">
+
+            <p>Quantidade:</p>
+
+            <div class="botoes-quantidade">
+
+              <!-- Diminui a quantidade -->
+              <button
+                type="button"
+                (click)="diminuirQuantidade()"
+                [disabled]="quantidade() <= 1"
+                aria-label="Diminuir quantidade">
+                −
+              </button>
+
+              <!-- Quantidade selecionada -->
+              <span>{{ quantidade() }}</span>
+
+              <!-- Aumenta a quantidade até o limite do estoque -->
+              <button
+                type="button"
+                (click)="aumentarQuantidade()"
+                [disabled]="quantidade() >= item.estoque"
+                aria-label="Aumentar quantidade">
+                +
+              </button>
+
+            </div>
+          </div>
+
+          <!-- Calcula o valor total da quantidade selecionada -->
+          <p class="preco-total">
+            Total:
+            <strong>
+              {{ (item.preco * quantidade()).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+              }) }}
+            </strong>
+          </p>
+
+          <!-- Adiciona o produto ao carrinho -->
+          <button
+            type="button"
+            (click)="adicionarAoCarrinho()">
+            Comprar
+          </button>
+
+          <!-- Exibe a confirmação após adicionar o produto -->
+          @if (mensagemCarrinho()) {
+            <p class="mensagem-carrinho" role="status">
+              {{ mensagemCarrinho() }}
+            </p>
+          }
+
+        } @else {
+
+          <!-- Mensagem exibida quando não existe estoque -->
+          <p class="estoque">
+            Produto esgotado
+          </p>
+
+          <!-- Impede a compra de produtos esgotados -->
+          <button type="button" disabled>
+            Indisponível
+          </button>
+
+        }
+
       </div>
     </section>
+
   } @else {
-    <h2>Produto não encontrado</h2>
+
+    <!-- Mensagem exibida enquanto a API carrega o produto -->
+    <p>Carregando informações do produto...</p>
+
   }
+
 </main>

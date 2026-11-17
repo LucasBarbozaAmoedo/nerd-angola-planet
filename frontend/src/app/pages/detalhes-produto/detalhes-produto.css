@@ -1,5 +1,9 @@
 
-/* Página de detalhes */
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
+/* Define o visual da página de detalhes */
 :host {
   display: block;
   min-height: 100vh;
@@ -8,77 +12,307 @@
   font-family: Arial, sans-serif;
 }
 
+/* Mantém os tamanhos dos elementos previsíveis */
+* {
+  box-sizing: border-box;
+}
+
+/* Define a largura e o espaçamento da página */
 .detalhes-produto {
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 50px 8%;
 }
 
+/* Link para voltar ao catálogo */
 .detalhes-produto > a {
   color: #facc15;
   text-decoration: none;
+  font-weight: 500;
 }
 
+/* Destaca o link ao passar o mouse */
+.detalhes-produto > a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   ORGANIZAÇÃO DO PRODUTO
+======================================== */
+
+/* Divide a página entre imagem e informações */
 .conteudo-produto {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 50px;
   align-items: center;
   margin-top: 40px;
 }
 
+/* ========================================
+   IMAGEM DO PRODUTO
+======================================== */
+
+/* Área que contém a imagem da figure */
 .imagem-detalhes {
-  background-color: #19191f;
-  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 420px;
   padding: 25px;
-  text-align: center;
+  background-color: #19191f;
+  border: 1px solid #33333d;
+  border-radius: 12px;
 }
 
+/* Mantém a imagem proporcional */
 .imagem-detalhes img {
+  display: block;
   width: 100%;
-  max-height: 450px;
+  max-height: 400px;
   object-fit: contain;
 }
 
+/* ========================================
+   INFORMAÇÕES DO PRODUTO
+======================================== */
+
+/* Evita que textos grandes ultrapassem a coluna */
+.informacoes-produto {
+  min-width: 0;
+}
+
+/* Nome da figure */
 .informacoes-produto h1 {
   color: #facc15;
   font-size: 36px;
-  margin-bottom: 15px;
+  margin: 0 0 15px;
 }
 
+/* Categoria ou anime */
 .categoria {
   color: #aaaaaa;
+  font-size: 15px;
   margin-bottom: 25px;
 }
 
+/* Descrição da figure */
 .descricao {
+  color: #dddddd;
   line-height: 1.7;
   margin-bottom: 25px;
 }
 
+/* Preço unitário */
+.preco {
+  color: #facc15;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+/* Quantidade disponível no estoque */
 .estoque {
+  color: #cccccc;
   margin-bottom: 25px;
 }
 
-.informacoes-produto button {
-  padding: 15px 25px;
+/* ========================================
+   CONTROLE DE QUANTIDADE
+======================================== */
+
+/* Organiza o título e os botões de quantidade */
+.controle-quantidade {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+/* Texto "Quantidade" */
+.controle-quantidade p {
+  margin: 0;
+  color: #cccccc;
+}
+
+/* Organiza os botões de diminuir e aumentar */
+.botoes-quantidade {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Botões pequenos exclusivos do controle */
+.informacoes-produto .botoes-quantidade button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background-color: #25252d;
+  color: #ffffff;
+  border: 1px solid #44444f;
+  border-radius: 8px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+.informacoes-produto .botoes-quantidade button:hover:not(:disabled) {
   background-color: #b91c1c;
-  color: white;
+}
+
+/* Desativa visualmente os botões nos limites */
+.informacoes-produto .botoes-quantidade button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Número da quantidade selecionada */
+.botoes-quantidade span {
+  min-width: 25px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ========================================
+   PREÇO TOTAL
+======================================== */
+
+/* Organiza o valor total da compra */
+.preco-total {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+/* Destaca o valor calculado */
+.preco-total strong {
+  color: #facc15;
+  font-size: 24px;
+}
+
+/* ========================================
+   BOTÃO COMPRAR
+======================================== */
+
+/* Aplica o estilo aos botões principais,
+   sem alterar os botões de quantidade */
+.informacoes-produto > button {
+  padding: 15px 35px;
+  background-color: #b91c1c;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.informacoes-produto button:hover {
+/* Efeito ao passar o mouse */
+.informacoes-produto > button:hover:not(:disabled) {
   background-color: #dc2626;
+  transform: translateY(-2px);
 }
 
-/* Ajuste para celulares */
-@media (max-width: 768px) {
+/* Aparência do botão indisponível */
+.informacoes-produto > button:disabled {
+  background-color: #44444f;
+  color: #aaaaaa;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   MENSAGEM DO CARRINHO
+======================================== */
+
+/* Confirma que o produto foi adicionado */
+.mensagem-carrinho {
+  margin-top: 18px;
+  padding: 12px 16px;
+  background-color: #183b2a;
+  color: #86efac;
+  border: 1px solid #166534;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* ========================================
+   ACESSIBILIDADE
+======================================== */
+
+/* Destaca os botões durante a navegação por teclado */
+.informacoes-produto button:focus-visible,
+.detalhes-produto > a:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 3px;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+/* Tablets e telas menores */
+@media (max-width: 900px) {
+
+  /* Coloca a imagem acima das informações */
   .conteudo-produto {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 30px;
   }
 
+  .imagem-detalhes {
+    min-height: 320px;
+  }
+
+  .imagem-detalhes img {
+    max-height: 320px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+
+  /* Reduz o espaçamento lateral */
+  .detalhes-produto {
+    padding: 30px 6%;
+  }
+
+  /* Ajusta a imagem */
+  .imagem-detalhes {
+    min-height: 250px;
+    padding: 18px;
+  }
+
+  .imagem-detalhes img {
+    max-height: 280px;
+  }
+
+  /* Reduz o tamanho dos textos */
   .informacoes-produto h1 {
     font-size: 28px;
+  }
+
+  .preco {
+    font-size: 26px;
+  }
+
+  .preco-total strong {
+    font-size: 21px;
+  }
+
+  /* Ajusta o botão principal */
+  .informacoes-produto > button {
+    width: 100%;
   }
 }
