@@ -1,12 +1,20 @@
+
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "API REST do projeto Nerd Angola Planet",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "jest --runInBand",
+    "test:coverage": "jest --coverage --runInBand"
   },
-  "keywords": [],
+  "keywords": [
+    "api",
+    "express",
+    "mysql",
+    "ecommerce"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
@@ -15,5 +23,22 @@
     "dotenv": "^18.0.10",
     "express": "^5.3.0",
     "mysql2": "^3.24.6"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "supertest": "^7.3.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "app.js",
+      "services/**/*.js",
+      "utils/**/*.js"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "html"
+    ]
   }
 }
